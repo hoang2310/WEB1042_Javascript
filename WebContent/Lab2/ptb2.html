@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        function giaiPtB2(){
+            var a = prompt("Moi nhap vao he so a ");
+            var b = prompt("Moi nhap vao he so b ");
+            var c = prompt("Moi nhap vao he so c ");
+
+            var delta = Math.pow(b,2) - 4*a*c;
+            alert(delta);
+            if(delta < 0){
+                alert("he phuong trinh vo nghiem");
+                return;
+            }
+
+            if(delta == 0){
+                alert("Phuong trinh co mot nghiem : x = "+(-b/(2*a)));
+            } else{
+                alert("Phuong trinh co 2 nghiem :\nx1= "+( (-b + Math.sqrt(delta)) / (2*a) )+"\nx2 = "+(-b- Math.sqrt(delta)) / (2*a) ));
+            }
+        }
+    </script>
+</head>
+<body>
+    
+    <script>
+        giaiPtB2();
+    </script>
+</body>
+</html>

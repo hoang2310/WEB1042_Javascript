@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        function nhap(){
+            while(true){
+                var x = prompt("Mời nhập vào một số :");
+                if(isNaN(x)){
+                    alert(x+" không phải là một số, vui lòng nhập lại!");
+                    continue;
+                }
+                return x;
+            }
+        }
+        function canbac2(x){
+            document.writeln("Căn bậc 2 của "+x+" là : "+Math.sqrt(x));
+        }
+    </script>
+</head>
+<body>
+    <script>
+        canbac2(nhap());
+    </script>
+</body>
+</html>
