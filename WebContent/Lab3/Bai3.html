@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            text-align: center;
+        }
+
+        button {
+            width: 70px;
+            height: 70px;
+        }
+    </style>
+    <script>
+        var bieuthuc = "";
+        function toanghang(x){
+            bieuthuc = bieuthuc.concat(x);
+        }
+
+        function toantu(x){
+            bieuthuc = bieuthuc.concat(x);
+        }
+
+        function giatribieuthuc(){
+            alert(eval(bieuthuc));
+            bieuthuc = "";
+        }
+    </script>
+</head>
+
+<body>
+    <h1>May tinh dien tu</h1>
+    <br />
+    <button onclick="toanghang(7)">7</button>
+    <button onclick="toanghang(8)">8</button>
+    <button onclick="toanghang(9)">9</button>
+    <button onclick="toantu('+')">+</button>
+    <br />
+    <br />
+    <button onclick="toanghang(4)">4</button>
+    <button onclick="toanghang(5)">5</button>
+    <button onclick="toanghang(6)">6</button>
+    <button onclick="toantu('-')">-</button>
+    <br />
+    <br />
+    <button onclick="toanghang(1)">1</button>
+    <button onclick="toanghang(2)">2</button>
+    <button onclick="toanghang(3)">3</button>
+    <button onclick="toantu('*')">*</button>
+    <br />
+    <br />
+    <button onclick="toanghang(0)">0</button>
+    <button onclick="toanghang()">C</button>
+    <button onclick="giatribieuthuc()">=</button>
+    <button onclick="toantu('/')">/</button>
+    <br />
+</body>
+
+</html>

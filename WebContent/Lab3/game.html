@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        function game() {
+            var x = prompt("Mời nhập vào một số nguyên từ 0 -> 100");
+            var kq = Math.round(Math.random()*100);
+            document.writeln(kq);
+            if(x == kq){
+                alert("Chúc mừng bạn đã đoán đúng số bí mật : "+kq);
+            } else if(x > kq){
+                alert("Số bạn đoán lớn hơn số bí mật!");
+            } else {
+                alert("Số bạn đoán nhỏ hơn số bí mật!");
+            }
+        }
+    </script>
+</head>
+
+<body>
+
+    <script>
+        game();
+    </script>
+</body>
+
+</html>

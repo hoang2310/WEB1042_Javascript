@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        function GPTB2(tsa, tsb, tsc) {
+            this.a = tsa;
+            this.b = tsb;
+            this.c = tsc;
+
+            this.delta = function () {
+                return this.b * this.b - 4 * this.a * this.c;
+            }
+
+            this.tinhNghiem = function () {
+                if (this.delta() < 0) {
+                    alert("Phương trình vô nghiệm!");
+                } else if (this.delta() == 0) {
+                    alert("Phương trình có một nghiệm kép : " + (-this.b / (2 * this.a)));
+                } else {
+                    var x1 = (-this.b + Math.sqrt(this.delta())) / (2 * this.a);
+                    var x2 = (-this.b - Math.sqrt(this.delta())) / (2 * this.a);
+                    alert("Phương trình có hai nghiệm :\nx1 = " + x1 + "\nx2 = " + x2);
+                }
+            }
+        }
+    </script>
+</head>
+
+<body>
+
+    <label>a</label><input type="text" id="a" />
+    <label>b</label><input type="text" id="b" />
+    <label>c</label><input type="text" id="c" />
+
+    <input type="button" value="Tinh" id="btn">
+    <script>
+        document.getElementById("btn").onclick = function () {
+            var a = document.getElementById("a").value;
+            var b = document.getElementById("b").value;
+            var c = document.getElementById("c").value;
+            GPTB2["test"] = new GPTB2(a,b,c);
+            GPTB2["test"].tinhNghiem();
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        function SinhVien() {
+            alert("Mời nhập họ tên và điểm");
+            this.hoten = prompt("Họ tên :");
+            this.diem = prompt("Điểm : ");
+            this.hocluc = function () {
+                if (this.diem < 5) {
+                    alert("Yếu");
+                } else if (this.diem < 6.5) {
+                    alert("Trung Bình");
+                } else if (this.diem < 8) {
+                    alert("Khá");
+                } else {
+                    alert("Giỏi");
+                }
+            }
+        }
+    </script>
+</head>
+
+<body>
+
+    <script>
+        SinhVien["test"] = new SinhVien();
+        SinhVien["test"].hocluc();
+    </script>
+</body>
+
+</html>
