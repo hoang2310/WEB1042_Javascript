@@ -5,89 +5,34 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Test</title>
+    <title>Document</title>
 </head>
 
 <body>
-    <div id="container">
-        <div id="giohang">
-            <form action="/product/thanhtoan" method="POST">
-                <h1>GIỎ HÀNG</h1>
-                <div class="giohang-user-info">
-                    <div>
-                        <div class="giohang-title">Thông tin khách hàng</div>
 
-                        <div class="form-group">
-                            <label>Họ và Tên : </label><br /> <input type="text" class="form-controller"
-                                value="Vu Hoàng Long" readonly="readonly" />
-                        </div>
-                        <div class="form-group">
-                            <label>Số điện thoại : </label><br /> <input type="text" class="form-controller"
-                                value="0334623542" readonly="readonly" />
-                        </div>
-                        <div class="form-group">
-                            <label>Email : </label><br /> <input type="text" class="form-controller"
-                                value="vlbn99@gmail.com" readonly="readonly" />
-                        </div>
-                        <div class="form-group">
-                            <label>Địa chỉ : </label><br /> <input type="text" name="address" class="form-controller"
-                                required="required" />
-                        </div>
-                        <div class="form-group">
-                            <label>Ghi chú : </label><br />
-                            <textarea name="note"></textarea>
-                        </div>
-                    </div>
-                </div>
-                <div class="giohang-products">
-                    <div class="giohang-title">Sản phẩm</div>
-                    <div>
-                        <div class="giohang-product">
-                            <div>
-                                <img alt="product" src="">
-                            </div>
-                            <div class="costs">
-                                <p>Adidas 26</p>
-                                <p>Số lượng : <span>1</span></p>
-                                <input type="hidden" value="126">
-                            </div>
-                            <div>126$</div>
-                        </div>
-                        <div class="giohang-product">
-                            <div>
-                                <img alt="product" src="">
-                            </div>
-                            <div class="costs">
-                                <p>Adidas 3</p>
-                                <p>Số lượng : <span>1</span></p>
-                                <input type="hidden" value="103">
-                            </div>
-                            <div>103$</div>
-                        </div>
-                        <div class="giohang-product">
-                            <div>Thành Tiền</div>
-                            <div></div>
-                            <div>0$</div>
-                        </div>
-                    </div>
-                    <input type="submit" value="Xác nhận thanh toán" class="form-btn" />
-
-                    <br /> <label></label>
-                </div>
-            </form>
-        </div>
-    </div>
+    <form action="/login" id="form-login">
+        <input type="text" name="username" id="username" required="required" />
+        <input type="password" name="password" id="password" required="required" />
+        <input type="submit" value="Login" id="login-btn">
+    </form>
+    <p id="message"></p>
 
     <script>
-        document.body.onload = function () {
-            var products = document.getElementsByClassName("costs");
-            /* for (let index = 0; index < products.length; index++) {
-                const element = products[index];
-                console.log(index.firstChild.innerHTML)
-            } */
+        document.getElementById("form-login").onsubmit = validation;
 
-        console.log(products[0].firstChild.nodeValue);
-        };
+        function validation() {
+            var form = document.getElementById("form-login");
+            var inputs = form.getElementsByTagName("input");
+            console.log(inputs[0].value);
+            if (inputs[0].value == inputs[1].value) {
+                return true;
+            }
+            console.log(inputs[0].value == inputs[1].value);
+            document.getElementById("message").innerText = "lol";
+            return false;
+        }
+
     </script>
 </body>
+
 </html>

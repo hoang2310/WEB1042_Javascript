@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<script>
+   function them(btn){
+        var row = btn.parentElement.parentElement.cloneNode(true);
+        var btnXoa = row.getElementsByTagName("button")[0];
+        btnXoa.innerText = "Xoa";
+        btnXoa.setAttribute('onclick', 'xoa(this)');
+        document.getElementById("giohang").appendChild(row);
+        var gia = Number(row.getElementsByTagName("td")[1].innerText);
+        var tongTien = Number(document.getElementById("tien").innerText);
+        tongTien += gia;
+        document.getElementById("tien").innerText = tongTien;
+   } 
+
+   function xoa(btn){
+       var row = btn.parentElement.parentElement;
+       document.getElementById("giohang").removeChild(row);
+   }
+</script>
+<body>
+    <h1>Iphone</h1>
+    <table>
+        <tr>
+            <td>Ip9</td>
+            <td>1234</td>
+            <td><button onclick="them(this)">Them</button></td>
+        </tr>
+    </table>
+    <h1>Gio Hang Cua Ban</h1>
+    <table id="giohang" border="1">
+    </table>
+    <h1>Tong Tien : <label id="tien"></label>$</h1>
+</body>
+</html>

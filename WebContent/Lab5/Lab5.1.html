@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            text-align: center;
+        }
+
+        img {
+            width: 400px;
+            height: 400px;
+            margin-top: 100px;
+        }
+    </style>
+</head>
+
+<body>
+    <img src="https://ichef.bbci.co.uk/news/976/cpsprodpb/16620/production/_91408619_55df76d5-2245-41c1-8031-07a4da3f313f.jpg"
+        alt="anh" id="anh">
+
+    <script>
+        var arrayPicture = ['https://ichef.bbci.co.uk/news/976/cpsprodpb/16620/production/_91408619_55df76d5-2245-41c1-8031-07a4da3f313f.jpg',
+            'https://i.guim.co.uk/img/media/327e46c3ab049358fad80575146be9e0e65686e7/0_0_1023_742/master/1023.jpg?width=445&quality=45&auto=format&fit=max&dpr=2&s=331a1bc4f5d7a96a6131f4f142065662',
+            'https://static01.nyt.com/images/2016/09/28/us/17xp-pepethefrog_web1/28xp-pepefrog-articleLarge.jpg?quality=90&auto=webp'];
+        var i = 0;
+        function loadPicture() {
+            i++;
+            if (i == arrayPicture.length) {
+                i = 0;
+            }
+
+            document.getElementById("anh").src = arrayPicture[i];
+            setTimeout("loadPicture()", 1000);
+        }
+        loadPicture();
+    </script>
+</body>
+
+</html>
