@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        body {
+            text-align: center;
+        }
+
+        img {
+            width: 600px;
+            height: 600px;
+            margin-top: 100px;
+        }
+    </style>
+</head>
+
+<body onload="loadAnh()">
+    <img name="anh"
+        src="https://static01.nyt.com/images/2016/09/28/us/17xp-pepethefrog_web1/28xp-pepefrog-articleLarge.jpg?quality=90&auto=webp"
+        onmouseover="onMouseOverEvent(this)" onmouseout="onMouseOutEvent()">
+
+    <script>
+        var anh0 = new Image();
+        var anh1 = new Image();
+
+        function loadAnh() {
+            anh0.src = "https://static01.nyt.com/images/2016/09/28/us/17xp-pepethefrog_web1/28xp-pepefrog-articleLarge.jpg?quality=90&auto=webp";
+            anh1.src = "https://i.guim.co.uk/img/media/327e46c3ab049358fad80575146be9e0e65686e7/0_0_1023_742/master/1023.jpg?width=445&quality=45&auto=format&fit=max&dpr=2&s=331a1bc4f5d7a96a6131f4f142065662";
+        }
+
+        function onMouseOverEvent() {
+            document.anh.src = anh1.src;
+        }
+
+        function onMouseOutEvent() {
+            document.anh.src = anh0.src;
+        }
+    </script>
+</body>
+
+</html>
