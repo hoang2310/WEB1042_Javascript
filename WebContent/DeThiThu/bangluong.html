@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        table,
+        th,
+        td {
+            border: 1px solid black;
+            padding: 10px;
+        }
+
+        table {
+            margin: 0 auto;
+            border-collapse: collapse;
+            margin-bottom: 50px;
+        }
+
+        #div-btn {
+            text-align: center;
+        }
+
+        #div-btn button {
+            border-radius: 0;
+            padding: 10px 5px;
+            margin: 0px 5px;
+            background-color: cornflowerblue;
+            color: white;
+        }
+    </style>
+</head>
+
+<body>
+    <table id="table-rs">
+        <tr>
+            <th>HỌ VÀ TÊN</th>
+            <th>Lương T1</th>
+            <th>Lương T2</th>
+            <th>Lương T3</th>
+            <th>Lương TB</th>
+        </tr>
+        <tr>
+            <td>Lê Trọng Đạt</td>
+            <td>5000000</td>
+            <td>8000000</td>
+            <td>12000000</td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>Đặng Quang Minh</td>
+            <td>500000</td>
+            <td>1500000</td>
+            <td>3000000</td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>Trần Hữu Thiện</td>
+            <td>10000000</td>
+            <td>20000000</td>
+            <td>30000000</td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>Nguyễn Hoàng Tiến</td>
+            <td>2000000</td>
+            <td>4000000</td>
+            <td>6000000</td>
+            <td></td>
+        </tr>
+    </table>
+
+    <div id="div-btn">
+        <button id="tinh">Tính Lương TB</button>
+        <button id="xoa">Xóa Lương TB</button>
+        <button id="ttThap">Thu Nhập Thấp</button>
+        <button id="ttCao">Thu Nhập Cao</button>
+    </div>
+
+    <script>
+        var trArr = document.getElementById('table-rs').getElementsByTagName('tr');
+
+        document.getElementById('tinh').onclick = function () {
+            for (let index = 1; index < trArr.length; index++) {
+                const tdArr = trArr[index].getElementsByTagName('td');
+                const tb = (Number(tdArr[1].innerText) + Number(tdArr[2].innerText) + Number(tdArr[3].innerText)) / 3;
+                tdArr[4].innerText = tb.toFixed(2);
+            }
+        }
+
+        document.getElementById('xoa').onclick = function () {
+            for (let index = 1; index < trArr.length; index++) {
+                const tdArr = trArr[index].getElementsByTagName('td');
+                tdArr[4].innerText = '';
+            }
+        }
+
+        document.getElementById('ttThap').onclick = function () {
+            for (let index = 1; index < trArr.length; index++) {
+                const tdArr = trArr[index].getElementsByTagName('td');
+                if(tdArr[4].innerText == ''){
+                    return;
+                }
+                if(tdArr[4].innerText < 5000000){
+                    trArr[index].style.backgroundColor = 'red';
+                } else {
+                    trArr[index].style.backgroundColor = 'white';
+                }
+            }
+        }
+
+        document.getElementById('ttCao').onclick = function () {
+            for (let index = 1; index < trArr.length; index++) {
+                const tdArr = trArr[index].getElementsByTagName('td');
+                if(tdArr[4].innerText == ''){
+                    return;
+                }
+                if(tdArr[4].innerText > 5000000){
+                    trArr[index].style.backgroundColor = 'red';
+                } else {
+                    trArr[index].style.backgroundColor = 'white';
+                }
+            }
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        #nhapsp {
+            width: 200px;
+        }
+
+        #nhapsp input,
+        select,
+        option,
+        button {
+            width: 100%;
+            margin-top: 5px;
+        }
+
+        table, th, td {
+            border: 1px solid black;
+            padding: 5px;
+        }
+
+        table {
+            border-collapse: collapse;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Quan ly nhap kho</h1>
+
+    <div id="nhapsp">
+        <input type="text" id="product-name" placeholder="Tên Sản Phẩm"><br />
+        <input type="text" id="product-id" placeholder="Mã Sản Phẩm"><br />
+        <select name="ncc" id="ncc">
+            <option value="" selected>Nhà cung cấp</option>
+            <option value="viettel">Viettel</option>
+            <option value="fpt">FPT</option>
+        </select><br />
+        <input type="text" id="quantity" placeholder="Số lượng "><br />
+        <input type="text" id="price" placeholder="Giá tiền"><br />
+        <input type="text" id="status" placeholder="Tình trạng"><br />
+
+        <button id="add-btn">Thêm Mới</button>
+    </div>
+
+    <br>
+    <table id="table-rs">
+        <tr>
+            <th>Tên Sản Phẩm</th>
+            <th>Mã Sản Phẩm</th>
+            <th>Nhà cung cấp</th>
+            <th>Số lượng</th>
+            <th>Giá tiền</th>
+            <th>Status</th>
+            <th>Tổng tiền</th>
+        </tr>
+    </table>
+
+    <script>
+        var inputArr = document.getElementById('nhapsp').getElementsByTagName('input');
+
+        document.getElementById('add-btn').onclick = addSp;
+
+        function validate() {
+            for (let index = 0; index < inputArr.length; index++) {
+                const element = inputArr[index];
+                if (element.value == '' || element.value == null) {
+                    alert(element.placeholder + ' không được để trống');
+                    return null;
+                }
+            }
+
+            if (document.getElementById('ncc').value == '') {
+                alert('Nhà cung cấp không được để trống');
+                return null;
+            }
+
+            if (inputArr[0].value.length < 5) {
+                alert('Tên sản phẩm tối thiểu 5 kí tự');
+                return null;
+            }
+
+            if (inputArr[2].value < 0 || isNaN(inputArr[2].value)) {
+                alert('Số lượng sản phẩm phải là số dương');
+                return null;
+            }
+            if (inputArr[3].value < 0 || isNaN(inputArr[3].value)) {
+                alert('Giá sản phẩm phải là số dương');
+                return null;
+            }
+            return new Product(inputArr[0].value, inputArr[1].value, document.getElementById('ncc').value, inputArr[2].value, inputArr[3].value, inputArr[4].value);
+        }
+
+        function addSp(tr) {
+            var product = validate();
+            if (product != null) {
+                let tr = document.createElement('tr');
+                tr.innerHTML = '<td>' + product.name + '</td><td>' + product.id + '</td><td>' + product.ncc + '</td><td>' + product.quantity + '</td><td>' + product.price + '</td><td>' + product.status + '</td><td>' + product.getTongTien() + '</td>';
+                document.getElementById('table-rs').appendChild(tr);
+            }
+        }
+
+        function Product(name, id, ncc, quantity, price, status) {
+            this.name = name;
+            this.id = id;
+            this.ncc = ncc;
+            this.quantity = quantity;
+            this.price = price;
+            this.status = status;
+
+            this.getTongTien = function () {
+                return this.price * this.quantity;
+            }
+        }
+    </script>
+</body>
+
+</html>
