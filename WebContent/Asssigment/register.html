@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Register</title>
+
+    <style>
+        body {
+            padding-left: 100px;
+            padding-top: 50px;
+        }
+
+        .input {
+            width: 300px;
+            padding: 5px;
+        }
+
+        textarea {
+            width: 300px;
+            padding: 5px;
+        }
+
+        .error {
+            background-color: blanchedalmond;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Đăng ký thành viên</h1>
+    <form action="#" method="post" id="form-register">
+        <p>
+            <label>Mã sinh viên</label><br />
+            <input id="masv" class="input" />
+        </p>
+        <p>
+            <label>Họ và tên</label><br />
+            <input id="fullname" class="input" />
+        </p>
+        <p>
+            <label>Email</label><br />
+            <input id="email" class="input" />
+        </p>
+        <p>
+            <label>Giới tính</label><br />
+            <label for="male">Nam</label><input id="male" name="gender" type="radio" value="Nam" />
+            <label for="female">Nữ</label><input id="female" name="gender" type="radio" value="Nữ" />
+        </p>
+        <p id="hobbies">
+            <label>Sở thích</label><br />
+            <input type="checkbox" id="fav1" name="fav1" value="DocSach">
+            <label for="fav1"> Đọc Sách </label>
+            <input type="checkbox" id="fav2" name="fav2" value="DuLich">
+            <label for="fav2"> Du Lịch </label>
+            <input type="checkbox" id="fav3" name="fav3" value="AmNhac">
+            <label for="fav3"> Âm Nhạc </label>
+            <input type="checkbox" id="fav4" name="fav5" value="AmThuc">
+            <label for="fav4"> Ẩm Thực </label>
+            <input type="checkbox" id="fav5" name="fav5" value="Khac">
+            <label for="fav5"> Khác </label>
+        </p>
+        <p>
+            <label>Quốc tịch</label><br />
+            <select id="country" class="input">
+                <option selected="true" disabled="disabled">Mời chọn quốc tịch</option>
+                <option value="vn">Vietnam</option>
+                <option value="india">India</option>
+                <option value="china">China</option>
+            </select>
+        </p>
+        <p>
+            <label>Ghi chú</label><br />
+            <textarea id="note" name="note" rows="5" class="form-input"></textarea>
+        </p>
+        <button>Đặt mua</button>
+    </form>
+
+    <script>
+
+
+        function kiem_tra() {
+            let masv = document.getElementById('masv');
+            let fullname = document.getElementById('fullname');
+            let email = document.getElementById('email');
+            let hobbies = document.getElementById('hobbies');
+            let country = document.getElementById('country');
+            let note = document.getElementById('note');
+
+            if (masv.value.length == 0) {
+                alert("Không được để trống mã sinh viên");
+                return false;
+            }
+            if (fullname.value.length == 0) {
+                alert("Không được để trống họ và tên");
+                return false;
+            }
+            if (email.value.length == 0) {
+                alert("Không được để trống email");
+                return false;
+            }
+
+            if (!email.value.includes("@") || !email.value.includes(".")) {
+                alert("Định dạng email không hợp lệ");
+                return false;
+            }
+
+            if (country.value == "Mời chọn quốc tịch") {
+                alert("Mời chọn quốc tịch");
+                return false;
+            }
+
+            if (!document.getElementById("male").checked && !document.getElementById("female").checked) {
+                alert("Mời chọn giới tính");
+                return false;
+            }
+
+            if (note.value.length > 200) {
+                alert("Ghi chú không quá 200 kí tự!");
+                return false;
+            }
+
+            alert("Nhập thành công");
+            return true;
+        }
+
+        document.getElementById('form-register').onsubmit = kiem_tra;
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        body {
+            text-align: center;
+        }
+
+        table,
+        tr,
+        th,
+        td {
+            border: 1px solid black;
+        }
+
+        table {
+            margin: 0 auto;
+        }
+
+        tr {
+            text-align: left;
+            position: relative;
+        }
+
+        td {
+            position: relative;
+        }
+
+        .error {
+            position: absolute;
+            right: -100%;
+            color: red;
+        }
+    </style>
+</head>
+
+<body>
+    <form action="#" method="post" id="form">
+        <table>
+            <tr>
+                <th>Name</th>
+                <th>Value</th>
+            </tr>
+            <tr>
+                <td>Name</td>
+                <td><input type="text" id="input-name"><span id="name-error" class="error"></span></td>
+            </tr>
+            <tr>
+                <td>Sex</td>
+                <td id="input-gender"><input type="radio" name="gender">Male<br /><input type="radio"
+                        name="gender">Female<span id="gender-error" class="error"></span></td>
+            </tr>
+            <tr>
+                <td>Eye Color</td>
+                <td>
+                    <select id="input-color">
+                        <option selected>Chon mau mat</option>
+                        <option>green</option>
+                        <option>red</option>
+                        <option>blue</option>
+                        <option>black</option>
+                    </select>
+                    <span id="color-error" class="error"></span>
+                </td>
+            </tr>
+            <tr>
+                <td>Check all that apply</td>
+                <td>
+                    <input type="checkbox" id="checkbox-1" /> Over 6 feet tall <br />
+                    <input type="checkbox" id="checkbox-2" /> Over 200 pounds <br />
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    Describe your athletic ability :<br />
+                    <textarea cols="38" rows="6" id="textarea-1"></textarea>
+                </td>
+
+            </tr>
+            <tr style="text-align: center;">
+                <td colspan="2"><input type="submit" value="Enter my infomation"></td>
+            </tr>
+        </table>
+    </form>
+
+    <script>
+        document.getElementById("form").onsubmit = validate;
+
+        function validate() {
+            const name = document.getElementById('input-name');
+            const gender = document.getElementsByName('gender');
+            const color = document.getElementById('input-color');
+
+            if (name.value == '' || name.value == null) {
+                document.getElementById('name-error').innerText = 'Ten khong duoc de trong';
+                return false;
+            }
+            document.getElementById('name-error').innerText = '';
+            if (!gender[0].checked && !gender[1].checked) {
+                document.getElementById('gender-error').innerText = 'Vui long chon gioi tinh';
+                return false;
+            }
+            document.getElementById('gender-error').innerText = '';
+            if (color.value == 'Chon mau mat') {
+                document.getElementById('color-error').innerText = 'Vui long chon mau mat';
+                return false;
+            }
+            document.getElementById('color-error').innerText = '';
+            let rs = '\nName : ' + name.value + '\nGender : ';
+            if (gender[0].checked) {
+                rs += 'Male';
+            } else {
+                rs += 'Female';
+            }
+            rs += '\nEye Color : ' + color.value;
+            if (document.getElementById('checkbox-1').checked) {
+                rs += '\n+ Over 6 feet tall';
+            }
+            if (document.getElementById('checkbox-2').checked) {
+                rs += '\n+ Over 200 pounds';
+            }
+
+            rs += '\nAthletic ability : ' + document.getElementById("textarea-1").value;
+
+            alert('Nhap thanh cong, thong tin : ' + rs);
+            return true;
+        }
+    </script>
+</body>
+
+</html>
